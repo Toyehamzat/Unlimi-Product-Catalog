@@ -63,6 +63,7 @@ export function ProductProvider({ children }: ProductProviderProps) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useProductContext(): ProductContextType {
   const context = useContext(ProductContext);
   if (context === undefined) {
