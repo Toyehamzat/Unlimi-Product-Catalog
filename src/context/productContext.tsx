@@ -24,8 +24,8 @@ interface ProductContextType {
   products: Product[];
   loading: boolean;
   // error: string | null;
-  // searchTerm: string;
-  // setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface ProductProviderProps {
@@ -38,7 +38,7 @@ export function ProductProvider({ children }: ProductProviderProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   // const [error, setError] = useState<string | null>(null);
-  // const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     async function getProducts() {
@@ -56,7 +56,7 @@ export function ProductProvider({ children }: ProductProviderProps) {
     getProducts();
   }, []);
 
-  const value = { products, loading };
+  const value = { products, loading, searchTerm, setSearchTerm };
 
   return (
     <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
