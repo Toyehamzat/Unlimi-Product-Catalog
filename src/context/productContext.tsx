@@ -32,9 +32,7 @@ interface ProductProviderProps {
   children: ReactNode;
 }
 
-export const ProductContext = createContext<ProductContextType | undefined>(
-  undefined
-);
+const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export function ProductProvider({ children }: ProductProviderProps) {
   const [products, setProducts] = useState<Product[]>([]);
@@ -50,7 +48,7 @@ export function ProductProvider({ children }: ProductProviderProps) {
         setProducts(data);
       } catch (error) {
         console.error("Error fetching data", error);
-        // setError("Error fetching data");
+        // setError(error instanceof Error ? error.message : 'An unknown error occurred');
       } finally {
         setLoading(false);
       }
