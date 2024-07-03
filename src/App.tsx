@@ -6,9 +6,11 @@ import { ProductProvider } from "./context/productContext";
 function App() {
   return (
     <ProductProvider>
-      <section className="bg-slate-100 h-screen w-screen">
-        <Navbar />
-        <ProductTable />
+      <section className="m-auto bg-slate-100 h-screen max-w-full">
+        <div className="">
+          <Navbar />
+          <ProductTable />
+        </div>
       </section>
     </ProductProvider>
   );
