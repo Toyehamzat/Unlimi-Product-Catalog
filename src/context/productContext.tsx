@@ -37,7 +37,6 @@ interface ProductContextType {
 interface ProductProviderProps {
   children: ReactNode;
 }
-
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export function ProductProvider({ children }: ProductProviderProps) {
@@ -50,10 +49,11 @@ export function ProductProvider({ children }: ProductProviderProps) {
     async function getProducts() {
       try {
         setLoading(true);
-        const data = await fetchProducts();
+        const data = await fetchProducts(searchTerm);
         setProducts(data);
+        setError(null);
       } catch (error) {
-        // console.error("Error fetching data", error);
+        console.error("Error fetching data", error);
         setError(
           error instanceof Error ? error.message : "An unknown error occurred"
         );
@@ -62,7 +62,7 @@ export function ProductProvider({ children }: ProductProviderProps) {
       }
     }
     getProducts();
-  }, []);
+  }, [searchTerm]);
 
   const value = { products, loading, searchTerm, setSearchTerm, error };
 
