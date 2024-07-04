@@ -1,22 +1,75 @@
 import React from "react";
+import { TableCell, TableRow } from "../components/ui/table";
+interface Product {
+  SKU: number;
+  Name: string;
+  Description: string;
+  Brand: string;
+  Title: string;
+  Gender: string;
+  RETAIL: number;
+  "Cost Price": number;
+  Image_1: string;
+  URL: string;
+  Quantity: number;
+  size: string;
+  UPC: null | string;
+  catalog_time: string;
+  supplier: string;
+}
 
-function TableRow({ product, index }) {
+interface TableRowProps {
+  product?: Product;
+  index: number;
+  loading: boolean;
+}
+
+function SkeletonCell() {
   return (
-    <tr className=" px-2 py-4">
-      <td>{index + 1}</td>
-      <td>
-        <img src={product.image} alt={product.name} width="50" />
-      </td>
-      <td>{product.sku}</td>
-      <td>{product.name}</td>
-      <td>{product.title}</td>
-      <td>{product.description}</td>
-      <td>{product.brand}</td>
-      <td>{product.costPrice}</td>
-      <td>{product.quantity}</td>
-      <td>{product.size}</td>
-    </tr>
+    <TableCell className="py-4">
+      <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+    </TableCell>
   );
 }
 
-export default TableRow;
+function TableRows({ product, index, loading }: TableRowProps) {
+  if (loading) {
+    return (
+      <TableRow className="px-2 py-4 bg-white">
+        <SkeletonCell />
+        <TableCell className="py-4">
+          <div className="w-12 h-12 bg-gray-200 rounded animate-pulse"></div>
+        </TableCell>
+        <SkeletonCell />
+        <SkeletonCell />
+        <SkeletonCell />
+        <SkeletonCell />
+        <SkeletonCell />
+        <SkeletonCell />
+        <SkeletonCell />
+        <SkeletonCell />
+      </TableRow>
+    );
+  }
+
+  if (!product) return null;
+
+  return (
+    <TableRow className="px-2  bg-white rounded-md">
+      <TableCell>{index + 1}.</TableCell>
+      <TableCell>
+        <img src={product.Image_1} alt={product.Name} width={50} />
+      </TableCell>
+      <TableCell>{product.SKU}</TableCell>
+      <TableCell>{product.Name}</TableCell>
+      <TableCell>{product.Title}</TableCell>
+      <TableCell>{product.Description}</TableCell>
+      <TableCell>{product.Brand}</TableCell>
+      <TableCell>{product["Cost Price"]}</TableCell>
+      <TableCell>{product.Quantity}</TableCell>
+      <TableCell>{product.size}</TableCell>
+    </TableRow>
+  );
+}
+
+export default TableRows;
