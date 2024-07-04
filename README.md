@@ -1,11 +1,58 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project provides a minimal setup to get React working in Vite with HMR (Hot Module Replacement) and some ESLint rules.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Clone the repository:**
+
+   ```bash
+   git clone <YOUR_GITHUB_REPO_URL>
+   cd blutech-test-project
+   ```
+
+2. **Install dependencies::**
+
+   ```bash
+   npm install
+
+   ```
+
+3. **Start the development server:**
+
+   ```bash
+   npm run dev
+
+   ```
+
+   #. **File structure:**
+
+   ```css
+   ├── public
+   │   ├── favicon.ico
+   │   └── index.html
+   ├── src
+   │   ├── components
+   │   │   ├── Header.tsx
+   │   │   ├── DataTable.tsx
+   │   │   └── SearchBar.tsx
+   │   ├── context
+   │   │   └── ProductContext.tsx
+   │   ├── services
+   │   │   └── api.ts
+   │   ├── App.tsx
+   │   ├── main.tsx
+   │   └── index.css
+   ├── .eslintrc.js
+   ├── tsconfig.json
+   ├── tsconfig.node.json
+   ├── vite.config.ts
+   └── package.json
+   ```
+
+tech-test-project
+
+````
 
 ## Expanding the ESLint configuration
 
@@ -15,15 +62,15 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+// other rules...
+parserOptions: {
+ ecmaVersion: "latest",
+ sourceType: "module",
+ project: ["./tsconfig.json", "./tsconfig.node.json"],
+ tsconfigRootDir: __dirname,
+},
+};
+````
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
