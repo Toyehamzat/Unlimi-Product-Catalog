@@ -6,24 +6,30 @@ import {
   ReactNode,
 } from "react";
 import { fetchProducts } from "../services/api";
+import { Toaster } from "sonner";
 
 interface Product {
-  id: string;
-  name: string;
-  sku: string;
-  image: string;
-  title: string;
-  description: string;
-  brand: string;
-  costPrice: number;
-  quantity: number;
+  SKU: number;
+  Name: string;
+  Description: string;
+  Brand: string;
+  Title: string;
+  Gender: string;
+  RETAIL: number;
+  "Cost Price": number;
+  Image_1: string;
+  URL: string;
+  Quantity: number;
   size: string;
+  UPC: null | string;
+  catalog_time: string;
+  supplier: string;
 }
 
 interface ProductContextType {
   products: Product[];
   loading: boolean;
-  // error: string | null;
+  error: string | null;
   searchTerm: string;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -37,7 +43,7 @@ const ProductContext = createContext<ProductContextType | undefined>(undefined);
 export function ProductProvider({ children }: ProductProviderProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  // const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -47,8 +53,10 @@ export function ProductProvider({ children }: ProductProviderProps) {
         const data = await fetchProducts();
         setProducts(data);
       } catch (error) {
-        console.error("Error fetching data", error);
-        // setError(error instanceof Error ? error.message : 'An unknown error occurred');
+        // console.error("Error fetching data", error);
+        setError(
+          error instanceof Error ? error.message : "An unknown error occurred"
+        );
       } finally {
         setLoading(false);
       }
@@ -56,10 +64,13 @@ export function ProductProvider({ children }: ProductProviderProps) {
     getProducts();
   }, []);
 
-  const value = { products, loading, searchTerm, setSearchTerm };
+  const value = { products, loading, searchTerm, setSearchTerm, error };
 
   return (
-    <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
+    <ProductContext.Provider value={value}>
+      {children}
+      <Toaster />
+    </ProductContext.Provider>
   );
 }
 
