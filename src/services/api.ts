@@ -1,10 +1,21 @@
 import axios from "axios";
 
-const API_URL = `http://3.88.1.181:8000/products/public/catalog?supplier=FragranceX&first=0&last=100`;
+const BASE_URL = "http://3.88.1.181:8000/products/public/catalog";
 
-export const fetchProducts = async () => {
+export const fetchProducts = async (
+  searchTerm: string = "",
+  first: number = 0,
+  last: number = 100
+) => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(BASE_URL, {
+      params: {
+        supplier: "FragranceX",
+        first,
+        last,
+        search: searchTerm,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Error fetching products:", error);
