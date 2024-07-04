@@ -1,5 +1,6 @@
 import React from "react";
 import { TableCell, TableRow } from "../components/ui/table";
+import { RiCheckboxBlankLine } from "react-icons/ri";
 interface Product {
   SKU: number;
   Name: string;
@@ -56,7 +57,12 @@ function TableRows({ product, index, loading }: TableRowProps) {
 
   return (
     <TableRow className="px-2  bg-white rounded-md">
-      <TableCell>{index + 1}.</TableCell>
+      <TableCell>
+        <div className="flex flex-row  gap-2 justify-center align-middle">
+          <RiCheckboxBlankLine size={20} color="grey" />
+          {index + 1}.
+        </div>
+      </TableCell>
       <TableCell>
         <img src={product.Image_1} alt={product.Name} width={50} />
       </TableCell>
