@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://3.88.1.181:8000/products/public/catalog";
+const API_URL = `http://3.88.1.181:8000/products/public/catalog?supplier=FragranceX&first=0&last=100`;
 
 export const fetchProducts = async () => {
   try {
