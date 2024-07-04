@@ -1,4 +1,3 @@
-import React from "react";
 import { TableCell, TableRow } from "../components/ui/table";
 import { RiCheckboxBlankLine } from "react-icons/ri";
 interface Product {
