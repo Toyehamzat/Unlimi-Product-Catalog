@@ -3,7 +3,7 @@ import TableRows from "./TableRow";
 import {
   Table,
   TableBody,
-  TableCaption,
+  //   TableCaption,
   TableHead,
   TableHeader,
   TableRow,
@@ -89,7 +89,7 @@ function ProductTable() {
                 />
               ))}
         </TableBody>
-        <TableCaption>Department list.</TableCaption>
+        {/* <TableCaption>Department list.</TableCaption> */}
       </Table>
     </div>
   );
