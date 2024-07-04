@@ -1,6 +1,6 @@
 import React from "react";
 import { useProductContext } from "../context/productContext";
-import { FiSearch } from "react-icons/fi"; // Importing the search icon from Feather icons
+import { FiSearch } from "react-icons/fi";
 
 function SearchBar() {
   const { searchTerm, setSearchTerm } = useProductContext();
