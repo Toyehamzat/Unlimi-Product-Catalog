@@ -7,47 +7,28 @@ This project provides a minimal setup to get React working in Vite with HMR (Hot
 1. **Clone the repository:**
 
    ```bash
-   git clone <YOUR_GITHUB_REPO_URL>
-   cd blutech-test-project
+   git clone https://github.com/Toyehamzat/unlimi-Product-Catalog.git
    ```
 
-2. **Install dependencies::**
+2. **Go to the directory:**
+
+   ```bash
+   cd blutech-test-project
+
+   ```
+
+3. **Install dependencies::**
 
    ```bash
    npm install
 
    ```
 
-3. **Start the development server:**
+4. **Start the development server:**
 
    ```bash
    npm run dev
 
-   ```
-
-   #. **File structure:**
-
-   ```css
-   ├── public
-   │   ├── favicon.ico
-   │   └── index.html
-   ├── src
-   │   ├── components
-   │   │   ├── Header.tsx
-   │   │   ├── DataTable.tsx
-   │   │   └── SearchBar.tsx
-   │   ├── context
-   │   │   └── ProductContext.tsx
-   │   ├── services
-   │   │   └── api.ts
-   │   ├── App.tsx
-   │   ├── main.tsx
-   │   └── index.css
-   ├── .eslintrc.js
-   ├── tsconfig.json
-   ├── tsconfig.node.json
-   ├── vite.config.ts
-   └── package.json
    ```
 
 tech-test-project
